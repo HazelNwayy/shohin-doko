@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>商品どこ？ 店舗スタッフ用</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="logo.jpg" alt="商品どこ？" class="logo" onerror="this.style.display='none'">
+      <div>
+        <div class="app-name">商品どこ？ 店舗スタッフ用</div>
+        <div class="store-name" id="storeName"></div>
+      </div>
+    </div>
+    <div class="lang-buttons">
+      <a class="lang-btn" href="dashboard.html">ダッシュボード</a>
+      <button type="button" class="lang-btn" id="logoutBtn">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="container" id="staffMain" hidden>
+
+    <nav class="backbar">
+      <a href="index.html">買い物客の画面を見る</a>
+    </nav>
+
+    <!-- Edit where products are -->
+    <section class="search-card">
+      <h2 class="panel-head">売り場の変更</h2>
+      <p class="tagline">商品を別の場所に移したときは、ここで変更して「保存する」を押してください。
+        変更するとその商品の最終確認日が今日になります。</p>
+      <div id="editList"></div>
+      <div class="result-actions">
+        <button type="button" class="btn btn-primary" id="saveBtn">保存する</button>
+        <button type="button" class="btn btn-secondary" id="resetBtn">最初の状態に戻す</button>
+      </div>
+      <p class="feedback" id="saveMsg" hidden></p>
+    </section>
+
+    <!-- Today's pick -->
+    <section class="search-card">
+      <h2 class="panel-head">今日の店長のおすすめ</h2>
+      <p class="tagline">買い物客の検索画面に表示されます。おすすめしたい商品と、ひとことを設定してください。</p>
+
+      <label class="field">
+        <span class="field-label">表示する</span>
+        <select id="pickOn">
+          <option value="no">表示しない</option>
+          <option value="yes">表示する</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="field-label">商品</span>
+        <select id="pickProduct"></select>
+      </label>
+
+      <label class="field">
+        <span class="field-label">ひとこと（日本語）</span>
+        <input type="text" id="pickMessageInput" maxlength="40"
+               placeholder="例：今日は特価です。鍋のおともにどうぞ。">
+      </label>
+      <p class="note">※ひとことは入力したままの言葉で、どの言語の画面にも表示されます。
+        見出しの「今日の店長のおすすめ」は5言語に翻訳されます。</p>
+
+      <div class="result-actions">
+        <button type="button" class="btn btn-primary" id="savePickBtn">保存する</button>
+      </div>
+      <p class="feedback" id="pickMsg" hidden></p>
+    </section>
+
+    <section class="nomatch-card">
+      <b>この画面について</b><br>
+      ここでの変更は、今お使いのブラウザにだけ保存される試作品の仕組みです。
+      他のスマートフォンやパソコンには反映されません。
+      実際の店舗で使うときは、サーバー上のデータベースに保存する仕組みに変更します。
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    商品どこ？ prototype
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/staff.js"></script>
+</body>
+</html>

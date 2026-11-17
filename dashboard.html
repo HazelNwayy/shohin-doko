@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>商品どこ？ 店舗ダッシュボード</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="logo.jpg" alt="商品どこ？" class="logo" onerror="this.style.display='none'">
+      <div>
+        <div class="app-name">商品どこ？ 店舗ダッシュボード</div>
+        <div class="store-name" id="storeName"></div>
+      </div>
+    </div>
+    <div class="lang-buttons">
+      <a class="lang-btn" href="staff.html">売り場の変更</a>
+      <button type="button" class="lang-btn" id="logoutBtn">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="container dash" id="dashMain" hidden>
+
+    <nav class="backbar">
+      <a href="index.html">買い物客の画面に戻る</a>
+    </nav>
+
+    <div class="dash-head">
+      <h1>検索データの週次レポート</h1>
+      <div class="controls">
+        <select id="source" aria-label="データ">
+          <option value="demo">デモデータ（30日分）</option>
+          <option value="browser">このブラウザの記録</option>
+          <option value="sheet">Googleスプレッドシート</option>
+        </select>
+        <select id="period" aria-label="期間">
+          <option value="7">過去7日間</option>
+          <option value="30">過去30日間</option>
+          <option value="all">すべて</option>
+        </select>
+        <button type="button" class="btn btn-secondary" id="copyBtn">週次サマリーをコピー</button>
+      </div>
+    </div>
+    <p class="source-note" id="sourceNote"></p>
+
+    <section class="kpis">
+      <div class="kpi"><div class="k">検索回数</div><div class="v" id="kSearch">-</div><div class="s">期間内の合計</div></div>
+      <div class="kpi"><div class="k">検索ヒット率</div><div class="v" id="kFound">-</div><div class="s">登録商品に一致した検索</div></div>
+      <div class="kpi hero"><div class="k">棚位置の正答率</div><div class="v" id="kAccuracy">-</div><div class="s" id="kAccuracyNote">お客様の「ありました」「ここにない」から算出</div></div>
+      <div class="kpi"><div class="k">「ここにない」報告</div><div class="v" id="kReport">-</div><div class="s">棚の確認が必要なサイン</div></div>
+      <div class="kpi"><div class="k">音声検索の割合</div><div class="v" id="kVoice">-</div><div class="s">話して検索した割合</div></div>
+    </section>
+
+    <section class="panels">
+      <div class="panel"><h2>よく検索された商品</h2><div id="topProducts"></div></div>
+      <div class="panel"><h2>「ここにない」報告（商品別）</h2><div id="reports"></div></div>
+      <div class="panel"><h2>見つからなかった言葉</h2><div id="unmatched"></div></div>
+      <div class="panel"><h2>言語別の検索</h2><div id="langs"></div></div>
+      <div class="panel"><h2>時間帯別の検索</h2><div class="hours" id="hours"></div><div class="hours-axis"><span>0時</span><span>6時</span><span>12時</span><span>18時</span><span>23時</span></div></div>
+      <div class="panel wide"><h2>売り場改善のヒント</h2><ul class="tips" id="tips"></ul>
+        <p class="note">ヒントは検索データからの推測です。配置を変えた場合は、変更前後の売上（POSデータ）で効果を確かめてください。</p>
+      </div>
+    </section>
+
+    <p class="status" id="copyStatus" role="status"></p>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

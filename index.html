@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>商品どこ？</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top bar: logo, store name, language buttons -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="logo.jpg" alt="商品どこ？" class="logo" onerror="this.style.display='none'">
+      <div>
+        <div class="app-name">商品どこ？</div>
+        <div class="store-name" id="storeName"></div>
+      </div>
+    </div>
+    <div class="lang-box">
+      <span class="lang-label" id="langLabel"></span>
+      <div class="lang-buttons" id="langButtons"></div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Search area -->
+    <section class="search-card">
+      <p class="tagline" id="tagline"></p>
+      <form id="searchForm" class="search-row">
+        <input id="searchInput" type="search" autocomplete="off" aria-label="search">
+        <button type="submit" class="btn btn-primary" id="searchBtn"></button>
+      </form>
+      <button type="button" class="btn btn-voice" id="voiceBtn">
+        <span class="mic-icon" aria-hidden="true"></span>
+        <span id="voiceText"></span>
+      </button>
+      <p class="status" id="status" role="status"></p>
+
+      <div class="examples">
+        <div class="examples-title" id="examplesTitle"></div>
+        <div class="chips" id="chips"></div>
+      </div>
+    </section>
+
+    <!-- Today's pick from the store manager (set on the staff page) -->
+    <section class="pick-card" id="pickCard" hidden>
+      <div class="pick-title" id="pickTitle"></div>
+      <div class="pick-name" id="pickName"></div>
+      <p class="pick-message" id="pickMessage"></p>
+      <div class="pick-where" id="pickWhere"></div>
+      <button type="button" class="btn btn-pick" id="pickBtn">→</button>
+    </section>
+
+    <!-- Result area (hidden until a search) -->
+    <section class="result-card" id="result" hidden>
+      <div class="result-title" id="resultTitle"></div>
+      <div class="result-name" id="resultName"></div>
+      <div class="result-location" id="resultLocation"></div>
+      <div class="result-meta" id="resultMeta"></div>
+
+      <div class="map-title" id="mapTitle"></div>
+      <div class="map" id="map"></div>
+
+      <button type="button" class="btn btn-secondary btn-read" id="readBtn"></button>
+      <div class="result-actions">
+        <button type="button" class="btn btn-found" id="foundBtn"></button>
+        <button type="button" class="btn btn-report" id="reportBtn"></button>
+      </div>
+      <p class="feedback" id="feedbackMsg" hidden></p>
+    </section>
+
+    <!-- Message when nothing is found -->
+    <section class="nomatch-card" id="noMatch" hidden></section>
+
+  </main>
+
+  <footer class="footer">
+    商品どこ？ prototype ・ <a href="staff.html">店舗スタッフ用</a>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
